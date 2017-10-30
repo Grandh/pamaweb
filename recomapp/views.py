@@ -6,7 +6,7 @@ from django.http import HttpResponse,JsonResponse
 from regular.paTagController import *
 
 # Create your views here.
-# Ahead -- 
+# Ahead --
 def patientTagForm(request):
     return render(request,'recomapp/main.html')
 
@@ -19,6 +19,7 @@ def getPatientTags(request):
     for key in inputdataDict.keys():
         inputData[int(key)] = inputdataDict[key][0]
 
-    print inputData
+    for key in inputData.keys():
+        print key," ",inputData[key]
     result = activeRegualrHub(inputData)
     return JsonResponse(result)

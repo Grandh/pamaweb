@@ -15,9 +15,8 @@
 <body>
     <h2>患者标签-调试界面</h2>
     <hr>
-    <div id="resultdiv" style="float:right;"></div>
-    <div id="simulateForm" style="margin:8px;">
-        <h4>基本情况</h4>
+    <div id="simulateForm" style="margin:8px;width:30%;float:left">
+        <h4>个人情况</h4>
         性别：<select id="gender">
                 <option>男</option>
                 <option>女</option>
@@ -25,7 +24,6 @@
         年龄：<input type="number" id="age" min="1" max="150" value="25"/><br>
         身高：<input type="number" id="height" min="0" max="3" step="0.01" value="1.70"/>m<br>
         体重：<input type="number" id="weight" min="0" max="200" step="0.01" value="70"/>kg<br>
-        腰围：<input type="number" id="waistline" min="0" max="200" step="0.01" value="80"/>cm<br>
         教育程度：<select id="education">
                 <option>本科及以上</option>
                 <option>高中</option>
@@ -42,52 +40,94 @@
                 <option>无</option>
                 <option>学生</option>
                 <option>工作</option>
+             </select><br>
+        生活环境：<select id="surrounding">
+                <option>生活环境良好</option>
+                <option>生活环境一般</option>
+                <option>生活环境较差</option>
             </select><br>
-        环境：<select id="surrounding">
-                <option>良好</option>
-                <option>一般</option>
-                <option>较差</option>
-            </select><br>
-        口腔状况：<select id="mouth">
-                <option>良好</option>
-                <option>一般</option>
-                <option>较差</option>
-            </select><br>
-        是否残疾：<select id="disable">
-                <option>无残疾</option>
-                <option>有残疾</option>
-            </select><br>
-        <h4>血压血糖</h4>
+        心理：<select id="psychology">
+                <option>心理良好</option>
+                <option>心理一般</option>
+                <option>心理较差</option>
+             </select><br>
+        <!-- 此处应有选择是否怀孕 -->
+        <!-- checkbox -->
+        孕期：<input type="number" id="pregnant" min="0" max="43" step="1" value="0"/>周<br>
+        <h4>检查检验</h4>
         舒张压：<input type="number" id="diastolic" min="0" max="200" step="1" value="120"/>mmHg<br>
         收缩压：<input type="number" id="systolic" min="0" max="200" step="1" value="75"/>mmHg<br>
-        血糖含量：<input type="number" id="glucose" min="0" max="30" step="0.1" value="6.0"/>mmol/L<br>
-        <h4>调查</h4>
+        血糖：<input type="number" id="glucose" min="0" max="30" step="0.1" value="6.0"/>mmol/L<br>
+        口腔状况：<select id="mouth">
+            <option>口腔良好</option>
+            <option>口腔一般</option>
+            <option>口腔较差</option>
+        </select><br>
+        眼部状况：<select id="mouth">
+            <option>无</option>
+            <option>高血压并发眼疾</option>
+            <option>糖尿病并发视网膜脱落</option>
+        </select><br>
+        身体缺陷：<select id="disable">
+            <option>无</option>
+            <option>有残疾</option>
+        </select><br>
+        皮肤：<select id="skin">
+            <option>无</option>
+            <option>糖尿病足</option>
+            <option>慢性皮肤病</option> 
+        </select><br>
+        心脏：<select id="heart">
+            <option>无</option>
+            <option>心脏病</option>
+            <option>血管病变</option>
+            <option>肺源性心脏病</option>
+        </select><br>
+        肾脏：<select id="kidney">
+            <option>无</option>
+            <option>肾炎</option>
+            <option>肾功能不全</option>
+            <option>肾功能衰竭</option>
+        </select><br>
+
+        <h4>生活调查</h4>
         吸烟量：<input type="number" id="smoke" min="0"step="1" value="0"/>支<br>
         饮酒量：<input type="number" id="drink" min="0" step="100" value="100"/>ml<br>
         饮食情况：<select id="diet">
-                <option>良好</option>
-                <option>一般</option>
-                <option>较差</option>
+                <option>饮食良好</option>
+                <option>饮食一般</option>
+                <option>饮食较差</option>
             </select><br>
         运动情况：<select id="movement">
-                <option>良好</option>
-                <option>一般</option>
-                <option>较差</option>
+                <option>运动良好</option>
+                <option>运动一般</option>
+                <option>运动较差</option>
             </select><br>
-        诊断结果：<input type="text" id="treatment" value="无"/><br>
+
+        <h4>院内数据</h4>
+        糖尿病<select id="diabetes">
+            <option>无</option>
+            <option>糖尿病</option>
+        </select><br>
+        慢阻肺：<select id="copd">
+            <option>无</option>
+            <option>慢阻肺</option>
+        </select><br>
+        其他诊断结果：<input type="text" id="treatment" value="无"/><br>
         遗传病：<select id="heredopathia">
                 <option>无</option>
-                <option>有</option>
+                <option>先天性高血压</option>
+                <option>先天性糖尿病</option>
             </select><br>
         暴露史：<select id="exposure">
                 <option>无</option>
-                <option>有</option>
+                <option>有暴露史</option>
             </select><br>
         影像检查结果：<input type="text" id="imageology" value="无"/><br>
         处方：<input type="text" id="medicine" value="无"/><br>
         <button class="btn btn-primary" id="update_btn" onclick="updateTags()" style="margin:8px;">更新用户标签</button>
     </div>
-
+    <div id="resultdiv" style="width:40%;float:right;margin-right:10%"></div>
 
     <!-- ajax -->
     <script>
@@ -105,29 +145,37 @@
                     2:$('#age').val(),
                     3:$('#height').val(),
                     4:$('#weight').val(),
-                    5:$('#waistline').val(),
+                    5:$('#education').val(),
                     
-                    6:$('#education').val(),
-                    7:$('#marriage').val(),
-                    8:$('#occupation').val(),
-                    9:$('#surrounding').val(),
-                    10:$('#diastolic').val(),
+                    6:$('#marriage').val(),
+                    7:$('#occupation').val(),
+                    8:$('#surrounding').val(),
+                    9:$('#psychology').val(),
+                    10:$('#pregnant').val(),
 
-                    11:$('#systolic').val(),
-                    12:$('#glucose').val(),
-                    13:$('#mouth').val(),
-                    14:$('#disable').val(),
-                    15:$('#smoke').val(),
+                    11:$('#diastolic').val(),
+                    12:$('#systolic').val(),
+                    13:$('#glucose').val(),
+                    14:$('#mouth').val(),
+                    15:$('#eye').val(),
 
-                    16:$('#drink').val(),
-                    17:$('#diet').val(),
-                    18:$('#movement').val(),
-                    19:$('#treatment').val(),
-                    20:$('#heredopathia').val(),
+                    16:$('#disable').val(),
+                    17:$('#skin').val(),
+                    18:$('#heart').val(),
+                    19:$('#kidney').val(),
+                    20:$('#smoke').val(),
 
-                    21:$('#exposure').val(),
-                    22:$('#imageology').val(),
-                    23:$('#medicine').val(),
+                    21:$('#drink').val(),
+                    22:$('#diet').val(),
+                    23:$('#movement').val(),
+                    24:$('#diabetes').val(),
+                    25:$('#copd').val(),
+
+                    26:$('#treatment').val(),
+                    27:$('#heredopathia').val(),
+                    28:$('#exposure').val(),
+                    29:$('#imageology').val(),
+                    30:$('#medicine').val(),
                     
                 },
                 dataType:'json',
@@ -137,8 +185,9 @@
                     $("#resultdiv").empty()
                     var resulttext = ""
                     for(key in jsondata){
-                        if(jsondata[key] == ""){continue}
-                        $("#resultdiv").append($("<p></p>").text(jsondata[key]))
+                        var output = key + " " + jsondata[key];
+                        // if(jsondata[key] == ""){continue}
+                        $("#resultdiv").append($("<p></p>").text(output));
                     }
                 },
                 error:function(data){ alert('error')}
