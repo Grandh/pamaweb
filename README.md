@@ -29,11 +29,11 @@ create database pamaweb
 
 ## Deploy project in localhost:8080
 In root directory at project:<br>
-Set the database model
+- Set the database model
 ```
 python manage.py migrate
 ```
-Then run
+- Then run
 ```
 python manage.py runserver 0.0.0.0:8080
 ```
