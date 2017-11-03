@@ -28,3 +28,9 @@ In root directory at project:
 python manage.py runserver 0.0.0.0:8080
 ```
 Open `localhost:8080/patient` in your browser
+
+## The function of regular in ".recomapp/regular"
+`dataRegular.py`
+`regularHub.py`
+`paTagController.py`
+
