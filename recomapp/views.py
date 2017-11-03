@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
+from regular.dataRegular import *
 from regular.paTagController import *
 
 # Create your views here.
@@ -17,7 +18,8 @@ def getPatientTags(request):
     # 构建成实际的数据表
     inputData = {}
     for key in inputdataDict.keys():
-        inputData[int(key)] = inputdataDict[key][0]
+        data_type = dataType[key]  #[]表示读取Name ()用于读取number
+        inputData[data_type.value] = inputdataDict[key][0]
 
     for key in inputData.keys():
         print key," ",inputData[key]

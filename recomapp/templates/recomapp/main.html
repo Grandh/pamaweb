@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>患者标签化模拟系统</title>
     <!-- jQuery -->
+    {% load staticfiles %} 
    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <!-- bootstrap  -->
    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -16,14 +17,16 @@
     <h2>患者标签-调试界面</h2>
     <hr>
     <div id="simulateForm" style="margin:8px;width:30%;float:left">
+        <!-- {% csrf_token %} -->
         <h4>个人情况</h4>
-        性别：<select id="gender">
+        性别：<select id="gender" onchange="cc(this[selectedIndex].value);">
                 <option>男</option>
                 <option>女</option>
             </select><br>
         年龄：<input type="number" id="age" min="1" max="150" value="25"/><br>
         身高：<input type="number" id="height" min="0" max="3" step="0.01" value="1.70"/>m<br>
         体重：<input type="number" id="weight" min="0" max="200" step="0.01" value="70"/>kg<br>
+        腰围：<input type="number" id="waistline" min="0" max="200" step="0.1" value="65"/>cm<br>
         教育程度：<select id="education">
                 <option>本科及以上</option>
                 <option>高中</option>
@@ -37,36 +40,42 @@
                 <option>离异</option>
             </select><br>
         职业：<select id="occupation">
-                <option>无</option>
-                <option>学生</option>
-                <option>工作</option>
+                <option>无危险</option>
+                <option>轻危</option>
+                <option>高危</option>
              </select><br>
         生活环境：<select id="surrounding">
-                <option>生活环境良好</option>
-                <option>生活环境一般</option>
-                <option>生活环境较差</option>
+                <option>良好</option>
+                <option>一般</option>
+                <option>较差</option>
             </select><br>
         心理：<select id="psychology">
-                <option>心理良好</option>
-                <option>心理一般</option>
-                <option>心理较差</option>
+                <option>紧张</option>
+                <option>焦虑</option>
+                <option>消极</option>
              </select><br>
         <!-- 此处应有选择是否怀孕 -->
         <!-- checkbox -->
-        孕期：<input type="number" id="pregnant" min="0" max="43" step="1" value="0"/>周<br>
+        <p id="pregnant-input" style = "display:none;">孕期：<input type="number" id="pregnant" min="-1" max="43" step="1" value="-1"/>周</p>
         <h4>检查检验</h4>
         舒张压：<input type="number" id="diastolic" min="0" max="200" step="1" value="120"/>mmHg<br>
         收缩压：<input type="number" id="systolic" min="0" max="200" step="1" value="75"/>mmHg<br>
         血糖：<input type="number" id="glucose" min="0" max="30" step="0.1" value="6.0"/>mmol/L<br>
+        <strong>血脂</strong><br>
+        总胆固醇（TC）:<input type="number" id="lipidtc" min="0" max="100" step="0.01" value="4.12"/>mmol/L<br>
+        甘油三酯（TG）:<input type="number" id="lipidtg" min="0" max="100" step="0.01" value="1.10"/>mmol/L<br>
+        高密度脂蛋白（HDL）:<input type="number" id="lipidhdl" min="0" max="100" step="0.01" value="1.32"/>mmol/L<br>
+        低密度脂蛋白（LDL）:<input type="number" id="lipidldl" min="0" max="100" step="0.01" value="2.13"/>mmol/L<br>
+        <br>
         口腔状况：<select id="mouth">
-            <option>口腔良好</option>
-            <option>口腔一般</option>
-            <option>口腔较差</option>
+            <option>良好</option>
+            <option>一般</option>
+            <option>较差</option>
         </select><br>
         眼部状况：<select id="mouth">
             <option>无</option>
-            <option>高血压并发眼疾</option>
-            <option>糖尿病并发视网膜脱落</option>
+            <option>视网膜病变</option>
+            <option>晶状体异常</option>
         </select><br>
         身体缺陷：<select id="disable">
             <option>无</option>
@@ -91,20 +100,24 @@
         </select><br>
 
         <h4>生活调查</h4>
-        吸烟量：<input type="number" id="smoke" min="0"step="1" value="0"/>支<br>
-        饮酒量：<input type="number" id="drink" min="0" step="100" value="100"/>ml<br>
+        每日吸烟量：<input type="number" id="smoke" min="0"step="1" value="0"/>支<br>
+        每日饮酒量：<input type="number" id="drink" min="0" step="100" value="100"/>ml<br>
         饮食情况：<select id="diet">
-                <option>饮食良好</option>
-                <option>饮食一般</option>
-                <option>饮食较差</option>
+                <option>良好</option>
+                <option>一般</option>
+                <option>较差</option>
             </select><br>
         运动情况：<select id="movement">
-                <option>运动良好</option>
-                <option>运动一般</option>
-                <option>运动较差</option>
+                <option>良好</option>
+                <option>一般</option>
+                <option>较差</option>
             </select><br>
 
-        <h4>院内数据</h4>
+        <h4>院内记录</h4>
+        高血压：<select id="hypertension">
+            <option>无</option>
+            <option>高血压</option>
+        </select><br>
         糖尿病<select id="diabetes">
             <option>无</option>
             <option>糖尿病</option>
@@ -113,15 +126,24 @@
             <option>无</option>
             <option>慢阻肺</option>
         </select><br>
-        其他诊断结果：<input type="text" id="treatment" value="无"/><br>
-        遗传病：<select id="heredopathia">
+        脑卒中：<select id="stroke">
+            <option>无</option>
+            <option>脑卒中</option>
+        </select><br>
+        高血脂：<select id="hyperlipemia">
+            <option>无</option>
+            <option>高血脂</option>
+        </select><br>
+        家族疾病史：<select id="familydisease">
                 <option>无</option>
-                <option>先天性高血压</option>
-                <option>先天性糖尿病</option>
+                <option>早发心血管疾病家族史</option>
+                <option>家族遗传糖尿病史</option>
             </select><br>
-        暴露史：<select id="exposure">
+        暴露史(最近一个月是否曾到下列环境？):
+            <select id="exposure">
                 <option>无</option>
-                <option>有暴露史</option>
+                <option>流行病区域</option>
+                <option>环境污染</option>
             </select><br>
         影像检查结果：<input type="text" id="imageology" value="无"/><br>
         处方：<input type="text" id="medicine" value="无"/><br>
@@ -129,54 +151,68 @@
     </div>
     <div id="resultdiv" style="width:40%;float:right;margin-right:10%"></div>
 
-    <!-- ajax -->
     <script>
         $(document).ready(function(){
+            $('#pregnant-input').hide(); 
             $.ajaxSetup({
                 data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
             });
         });
+        function cc(val){
+            if( val == "女"){
+                $('#pregnant-input').show();
+            }else{
+                $('#pregnant-input').hide(); 
+            }
+        }
         function updateTags(){
             // 异步ajax，返回标签显示
             $.ajax({
                 url:"/gettag/",
                 data:{
-                    1:$('#gender').val(),
-                    2:$('#age').val(),
-                    3:$('#height').val(),
-                    4:$('#weight').val(),
-                    5:$('#education').val(),
+                    'gender':$('#gender').val(),
+                    'age':$('#age').val(),
+                    'height':$('#height').val(),
+                    'weight':$('#weight').val(),
+                    'waistline':$('#waistline').val(),
+                    'education':$('#education').val(),
                     
-                    6:$('#marriage').val(),
-                    7:$('#occupation').val(),
-                    8:$('#surrounding').val(),
-                    9:$('#psychology').val(),
-                    10:$('#pregnant').val(),
+                    'marriage':$('#marriage').val(),
+                    'occupation':$('#occupation').val(),
+                    'surrounding':$('#surrounding').val(),
+                    'psychology':$('#psychology').val(),
+                    'pregnant':$('#pregnant').val(),
 
-                    11:$('#diastolic').val(),
-                    12:$('#systolic').val(),
-                    13:$('#glucose').val(),
-                    14:$('#mouth').val(),
-                    15:$('#eye').val(),
+                    'diastolic':$('#diastolic').val(),
+                    'systolic':$('#systolic').val(),
+                    'glucose':$('#glucose').val(),
+                    'lipidtc':$('#lipidtc').val(),
+                    'lipidtg':$('#lipidtg').val(),
+                    'lipidhdl':$('#lipidhdl').val(),
+                    'lipidldl':$('#lipidldl').val(),
 
-                    16:$('#disable').val(),
-                    17:$('#skin').val(),
-                    18:$('#heart').val(),
-                    19:$('#kidney').val(),
-                    20:$('#smoke').val(),
+                    'mouth':$('#mouth').val(),
+                    'eye':$('#eye').val(),
+                    'disable':$('#disable').val(),
+                    'skin':$('#skin').val(),
+                    'heart':$('#heart').val(),
+                    'kidney':$('#kidney').val(),
 
-                    21:$('#drink').val(),
-                    22:$('#diet').val(),
-                    23:$('#movement').val(),
-                    24:$('#diabetes').val(),
-                    25:$('#copd').val(),
+                    'smoke':$('#smoke').val(),
+                    'drink':$('#drink').val(),
+                    'diet':$('#diet').val(),
+                    'movement':$('#movement').val(),
 
-                    26:$('#treatment').val(),
-                    27:$('#heredopathia').val(),
-                    28:$('#exposure').val(),
-                    29:$('#imageology').val(),
-                    30:$('#medicine').val(),
-                    
+                    'diabetes':$('#diabetes').val(),
+                    'copd':$('#copd').val(),
+                    'stroke':$('#stroke').val(),
+                    'hyperlipemia':$("#hyperlipemia").val(),
+                    'hypertension':$("#hypertension").val(),
+
+                    'familydisease':$('#familydisease').val(),
+                    'exposure':$('#exposure').val(),
+                    'imageology':$('#imageology').val(),
+                    'medicine':$('#medicine').val(),
                 },
                 dataType:'json',
                 type:'POST',
@@ -193,6 +229,7 @@
                 error:function(data){ alert('error')}
             })
         }
+
     </script>
 </body>
 </html>

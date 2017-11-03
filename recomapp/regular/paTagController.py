@@ -28,7 +28,7 @@ def activeRegualrHub(dataList):
     for i,data_num in enumerate(all_tag_filter):
         tag_type = tagType(i+1)
         if data_num == len(tag2data_reflect_dict[tag_type][0]):
-            tagResultDict[tag_type.value]=RegularHubList[i](dataList)
+                tagResultDict[tag_type.value]=RegularHubList[tag_type.name](dataList)
     #输出显示
     # print tagResultDict
     for key in tagResultDict.keys():

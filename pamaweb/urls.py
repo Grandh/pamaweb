@@ -16,9 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from recomapp import views as recom_views
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/',recom_views.patientTagForm),
+    url(r'^patient/',recom_views.patientTagForm),
     url(r'^gettag/',recom_views.getPatientTags),
 ]
