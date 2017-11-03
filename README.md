@@ -27,4 +27,4 @@ In root directory at project:
 ```
 python manage.py runserver 0.0.0.0:8080
 ```
-open localhost:8080/patient in your browser
+Open `localhost:8080/patient` in your browser
