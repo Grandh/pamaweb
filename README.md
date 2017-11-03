@@ -21,7 +21,7 @@ DATABASES = {
     }
 }
 ```
-If you use mysql, you should change your username and password in `setting.py`<br>
+If you use mysql, you should change your `username` and `password` in <strong>setting.py</strong><br>
 then go into the mysql
 ```
 create database pamaweb
