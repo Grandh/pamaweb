@@ -12,12 +12,12 @@ You can change database in <strong>settings.py</strong>
 ```
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.yourDatabaseType',
         'NAME': 'pamaweb',
-        'USER':'root',
-        'PASSWORD':'huang',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
+        'USER':'yourUsername',
+        'PASSWORD':'yourPassword',
+        'HOST':'ip',
+        'PORT':'port',
     }
 }
 ```
