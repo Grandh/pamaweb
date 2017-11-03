@@ -15,15 +15,25 @@ DATABASES = {
         'ENGINE': 'django.db.backends.yourDatabaseType',
         'NAME': 'pamaweb',
         'USER':'yourUsername',
-        'PASSWORD':'yourPassword',
-        'HOST':'ip',
-        'PORT':'port',
+        'PASSWORD':'yourPassword',
+        'HOST':'yourIp',
+        'PORT':'yourPort',
     }
 }
 ```
+If you use mysql, you should change your username and password in `setting.py`<br>
+then go into the mysql
+```
+create database pamaweb
+```
 
 ## Deploy project in localhost:8080
-In root directory at project:
+In root directory at project:<br>
+Set the database model
+```
+python manage.py migrate
+```
+Then run
 ```
 python manage.py runserver 0.0.0.0:8080
 ```
