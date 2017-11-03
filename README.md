@@ -1,7 +1,7 @@
 # pamaweb
 A simple django web for classfiy the patients
 
-## Recommand environment 
+## Recommend Environment 
 - python 2.7+
 - django 1.10+
 - mysql  5.7+
