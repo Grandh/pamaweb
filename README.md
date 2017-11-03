@@ -23,7 +23,7 @@ DATABASES = {
 ```
 
 ## Deploy project in localhost:8080
-In root directory in project:
+In root directory at project:
 ```
 python manage.py runserver 0.0.0.0:8080
 ```
