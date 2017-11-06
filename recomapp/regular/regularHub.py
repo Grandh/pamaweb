@@ -88,6 +88,8 @@ def heartRegular(datatuple):
 def familydiseaseRegular(datatuple):
     return valueindictionary(datatuple,tagType.familydisease)
 
+def mouthRegular(datatuple):
+    return valueindictionary(datatuple,tagType.mouth)
 def kidneyRegular(datatuple):
     return valueindictionary(datatuple,tagType.kidney)
 def codpRegular(datatuple):
@@ -108,8 +110,6 @@ def movementRegular(datatuple):
     return valuereflectdictionary(datatuple,tagType.movement)
 def dietRegular(datatuple):
     return valuereflectdictionary(datatuple,tagType.diet)
-def mouthRegular(datatuple):
-    return valuereflectdictionary(datatuple,tagType.mouth)
 def exposureRegular(datatuple):
     return valuereflectdictionary(datatuple,tagType.exposure)
 
@@ -134,7 +134,7 @@ def BMIRegular(datatuple): # body mess index
     # 计算BMI
     bmivalue = weight_data/(height_data**2)
 
-    gap = [0,18,24,27,30,35]
+    gap = [0,18,24,28,35,100]
     return valueincustomgap(bmivalue,gap)
 
 def BFRegular(datatuple):

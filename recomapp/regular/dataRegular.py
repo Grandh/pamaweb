@@ -55,13 +55,13 @@ tag2data_reflect_dict = {  #
                    ["",u"饮酒",u"饮酒过度",],
                    [200,500,1000],],                # 针对饮酒与过度 饮酒单位：ml
     tagType.BMI:[[dataType.height,dataType.weight],
-                 ["",u"体重过轻",u"体重正常",u"体重过重",u"轻度肥胖",u"肥胖",u"重度肥胖",],
+                 ["",u"体重过轻",u"体重正常",u"体重过重",u"肥胖",u"重度肥胖",],
                  []], # 针对过轻或肥胖
     tagType.BF:[[dataType.gender,dataType.age,dataType.height,dataType.weight],
-                ["",u"体脂率较低",u"体脂率正常",u"体脂率较高",]],   # 注意体脂率
+                ["",u"体脂率低",u"体脂率正常",u"体脂率高",]],   # 注意体脂率
     
     tagType.bloodglucose:[[dataType.glucose],
-                          ["",u"血糖正常",u"血糖较高",u"血糖较低",]],   # 注意血糖
+                          ["",u"血糖正常",u"血糖高",u"血糖低",]],   # 注意血糖
     tagType.familydisease:[[dataType.familydisease],
                           ["",u"早发心血管家族史",u"家庭遗传糖尿病史"],],  
 
@@ -75,11 +75,10 @@ tag2data_reflect_dict = {  #
                          ["",u"生活环境良好",u"生活环境一般",u"生活环境较差",],
                          [u"良好",u"一般",u"较差"],],  # 针对一般及以下
     tagType.mouth:[[dataType.mouth],
-                   ["",u"口腔良好",u"口腔一般",u"口腔较差",],
-                   [u"良好",u"一般",u"较差"]], # 针对一般以下
+                   ["",u"牙龈炎",u"牙周炎",u"口腔感染",u"龋齿",u"口辣",u"其他"],], # 针对一般以下
     tagType.psychology:[[dataType.psychology,],
-                    ["",u"心理紧张",u"精神焦虑",u"态度消极"],
-                    [u"紧张",u"焦虑",u"消极"],],
+                    ["",u"心理紧张",u"精神焦虑",u"精神抑郁",u"态度消极",u"其他负面心理"],
+                    [u"紧张",u"焦虑",u"抑郁",u"消极",u"其他负面心理"],],
     tagType.diet:[[dataType.diet],
                   ["",u"饮食良好",u"饮食一般",u"饮食较差",],
                   [u"良好",u"一般",u"较差"],],            # 针对一般与较差
@@ -88,7 +87,7 @@ tag2data_reflect_dict = {  #
                       ["",u"运动良好",u"运动一般",u"运动较差",],
                       [u"良好",u"一般",u"较差"],],        # 针对一般及以下
     tagType.exposure:[[dataType.exposure],
-                      ["",u"有暴露史",],
+                      ["",u"流行病区域",u"环境污染区域",],
                       [u"流行病区域",u"环境污染区域",],],                # 科普，涉及即推荐
     # 20171027 新增8个标签
     tagType.pregnant:[[dataType.pregnant,],
@@ -114,10 +113,10 @@ tag2data_reflect_dict = {  #
     tagType.hyperlipemia:[[dataType.hyperlipemia],
             ["",u"高血脂"],],
     tagType.lipid:[[dataType.lipidtc,dataType.lipidtg,dataType.lipidhdl,dataType.lipidldl],
-            ["",u"低血脂",u"血脂正常",u"高血脂"],],
+            ["",u"血脂低",u"血脂正常",u"血脂高"],],
 
     tagType.bloodpressure:[[dataType.diastolic,dataType.systolic],
-                           ["",u"血压较低",u"血压正常",u"一级高血压",u"二级高血压",u"三级高血压"]],  # 注意血压
+                           ["",u"血压低",u"血压正常",u"一级高血压",u"二级高血压",u"三级高血压"]],  # 注意血压
     tagType.hypertension:[[dataType.hypertension],
             ["",u"高血压"],],
     tagType.hypertensionclassify:[[dataType.diastolic,dataType.systolic], 
